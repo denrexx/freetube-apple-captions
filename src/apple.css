@@ -1,0 +1,741 @@
+/* App-local Apple design, using the supplied token layer. */
+html {
+  height: 100%;
+  background: transparent;
+  clip-path: inset(0 round 16px);
+}
+html.ft-maximized,
+html.ft-fullscreen {
+  clip-path: none;
+}
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+}
+body {
+  --bg-color: var(--bg-secondary) !important;
+  --card-bg-color: var(--bg-tertiary) !important;
+  --primary-text-color: var(--label) !important;
+  --secondary-text-color: var(--label-secondary) !important;
+  --primary-color: var(--accent) !important;
+  --secondary-color: var(--bg-secondary) !important;
+  --side-nav-color: var(--bg-secondary) !important;
+  --top-nav-color: var(--bg-tertiary) !important;
+  --search-bar-color: var(--fill-3) !important;
+  --accent-color: var(--accent) !important;
+  --accent-color-rgb: 232 180 200 !important;
+  --link-color: var(--ft-accent-ink) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 15px;
+  background: var(--bg-secondary) !important;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-sans) !important;
+  font-optical-sizing: auto;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--ft-accent-ink) !important;
+  outline-offset: 3px;
+}
+button:active {
+  filter: brightness(0.94);
+}
+#ft-titlebar {
+  height: 36px;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  color: var(--label-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  -webkit-app-region: no-drag;
+  touch-action: none;
+  user-select: none;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+}
+#ft-titlebar .ft-traffic {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  display: flex;
+  height: 36px;
+  align-items: center;
+  -webkit-app-region: no-drag;
+}
+#ft-titlebar button {
+  position: relative;
+  width: 26px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: default;
+  color: #242424;
+}
+#ft-titlebar button::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  inset: 10px 7px;
+  border-radius: 50%;
+  background: var(--light);
+  box-shadow: inset 0 0 0 1px #0002;
+}
+#ft-titlebar button span {
+  position: relative;
+  z-index: 1;
+  font: 12px/1 system-ui;
+  opacity: 0;
+}
+#ft-titlebar .ft-traffic:hover span,
+#ft-titlebar button:focus-visible span {
+  opacity: 1;
+}
+#ft-titlebar .ft-close {
+  --light: #ff5f57;
+}
+#ft-titlebar .ft-min {
+  --light: #febc2e;
+}
+#ft-titlebar .ft-max {
+  --light: #28c840;
+}
+html:not(.ft-fullscreen) .app {
+  padding-top: 36px;
+}
+html:not(.ft-fullscreen) .topNav {
+  top: 36px !important;
+}
+html:not(.ft-fullscreen) .sideNav {
+  top: 96px !important;
+  max-height: calc(100vh - 96px);
+}
+.ft-fullscreen #ft-titlebar {
+  display: none;
+}
+.topNav {
+  background: var(--bg-tertiary) !important;
+  box-shadow: 0 1px 0 var(--fill-3) !important;
+}
+.topNav .logoIcon {
+  display: none !important;
+}
+.topNav .logoText {
+  background: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+.topNav .logoText::after {
+  content: 'FreeTube';
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--label);
+}
+.topNav .searchContainer {
+  max-width: 640px;
+}
+.topNav .searchInput input {
+  border: 1px solid var(--fill-2) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--fill-4) !important;
+  box-shadow: none !important;
+}
+.sideNav {
+  background: var(--bg-secondary) !important;
+  box-shadow: none !important;
+  border-right: 1px solid var(--fill-3);
+}
+.sideNav .navOption {
+  border-radius: var(--radius-sm);
+  margin: 3px 8px;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+.sideNav .navOption:hover {
+  background: var(--fill-3) !important;
+}
+.sideNav .router-link-exact-active {
+  color: var(--ft-accent-ink) !important;
+  background: color-mix(in srgb, var(--accent) 22%, transparent) !important;
+}
+.sideNav .navLabel {
+  font-size: 13px;
+  font-weight: 500;
+}
+.sideNav hr {
+  opacity: 0.3;
+}
+.ft-card,
+.sectionBody {
+  border-radius: var(--radius-lg) !important;
+  background: var(--bg-tertiary) !important;
+  box-shadow: var(--shadow-1) !important;
+  border: 1px solid var(--fill-4);
+}
+.ft-list-video,
+.videoThumbnail {
+  border-radius: var(--radius-md);
+}
+h1,
+h2,
+.sectionTitle,
+.pageTitle {
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
+}
+.ft-minimal .settingsSections > .settingsSection,
+.ft-minimal .settingsSideNav,
+.ft-minimal .settingsNav {
+  display: none !important;
+}
+.ft-minimal .settingsSections {
+  width: 100% !important;
+  max-width: 880px;
+  margin-inline: auto !important;
+}
+#ft-apple-settings {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto 28px;
+  padding: 28px;
+  color: var(--label);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--fill-3);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-1);
+}
+#ft-apple-settings * {
+  box-sizing: border-box;
+}
+#ft-apple-settings h2 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.025em;
+}
+#ft-apple-settings .ft-subtitle {
+  margin: 8px 0 24px;
+  color: var(--label-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+#ft-apple-settings .ft-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 28px;
+}
+#ft-apple-settings label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 28px;
+  gap: 12px;
+}
+#ft-apple-settings output {
+  color: var(--label-secondary);
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+#ft-apple-settings input:not([type='checkbox']),
+#ft-apple-settings select {
+  width: 100%;
+  min-height: 44px;
+  font: inherit;
+  border-radius: var(--radius-sm);
+}
+#ft-apple-settings input[type='range'] {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+#ft-apple-settings input[type='color'] {
+  padding: 5px;
+  background: var(--fill-4);
+  border: 1px solid var(--fill-2);
+  cursor: pointer;
+}
+#ft-apple-settings input[type='text'],
+#ft-apple-settings select {
+  color: var(--label);
+  background: var(--bg-secondary);
+  padding: 8px 12px;
+  border: 1px solid var(--fill-2);
+}
+#ft-apple-settings button,
+#ft-apple-settings summary {
+  min-height: 44px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+#ft-apple-settings button {
+  padding: 10px 16px;
+  background: var(--fill-3);
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--label);
+  font-weight: 500;
+}
+#ft-apple-settings button.ft-primary {
+  background: var(--accent);
+  color: var(--ft-on-accent);
+}
+#ft-apple-settings details {
+  margin-top: 20px;
+  border-top: 1px solid var(--fill-3);
+  padding-top: 12px;
+}
+#ft-apple-settings summary {
+  display: list-item;
+  line-height: 44px;
+  font-weight: 600;
+}
+#ft-apple-settings .ft-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+#ft-apple-settings .ft-note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--label-secondary);
+}
+#ft-apple-settings .ft-preview {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, #3d4659, #111722);
+  contain: layout paint;
+}
+#ft-apple-settings .ft-preview::before {
+  content: 'Preview';
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  color: #fff9;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.ft-caption-preview-position {
+  position: absolute;
+  left: 3%;
+  right: 3%;
+  top: var(--ft-caption-position);
+  transform: translateY(-50%);
+  text-align: center;
+}
+.ft-caption-preview-text,
+#freetube-custom-caption-overlay .freetube-custom-caption-text {
+  font-family: var(--ft-caption-font) !important;
+  font-weight: var(--ft-caption-weight) !important;
+  font-optical-sizing: auto;
+  color: var(--ft-caption-color) !important;
+  -webkit-text-stroke: var(--ft-caption-stroke) var(--ft-caption-outline) !important;
+  paint-order: stroke fill;
+  text-shadow:
+    0 2px 3px #000c,
+    0 4px 12px #0008 !important;
+  letter-spacing: -0.014em;
+  line-height: 1.14 !important;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  background: rgb(0 0 0 / var(--ft-caption-bg));
+  border-radius: 8px;
+  padding: 0 0.13em;
+  box-decoration-break: clone;
+}
+.ft-caption-preview-text {
+  font-size: clamp(24px, calc(var(--ft-caption-size) * 0.52), 62px);
+}
+.ft-custom-captions-ready .shaka-text-container {
+  visibility: hidden !important;
+}
+/* Native captions keep the user's typography even during player replacement.
+   ::cue is also needed for Chromium's native TextTrack renderer. */
+.shaka-text-container [translate='no'],
+.shaka-text-container span {
+  font-family: var(--ft-caption-font) !important;
+  font-size: var(--ft-caption-size) !important;
+  font-weight: var(--ft-caption-weight) !important;
+  color: var(--ft-caption-color) !important;
+  -webkit-text-stroke: var(--ft-caption-stroke) var(--ft-caption-outline) !important;
+  paint-order: stroke fill;
+  text-shadow:
+    0 2px 3px #000c,
+    0 4px 12px #0008 !important;
+  background: rgb(0 0 0 / var(--ft-caption-bg)) !important;
+  line-height: 1.14 !important;
+}
+video::cue {
+  font-family: var(--ft-caption-font);
+  font-size: var(--ft-caption-size);
+  font-weight: var(--ft-caption-weight);
+  color: var(--ft-caption-color);
+  background: rgb(0 0 0 / var(--ft-caption-bg));
+  text-shadow:
+    0 1px 2px #000,
+    0 -1px 2px #000,
+    2px 0 2px #000,
+    -2px 0 2px #000;
+}
+#freetube-custom-caption-overlay {
+  position: absolute;
+  inset: var(--ft-caption-position) 3% auto;
+  transform: translateY(-50%);
+  text-align: center;
+  z-index: 4;
+  pointer-events: none;
+}
+#freetube-custom-caption-overlay[hidden] {
+  display: none !important;
+}
+#freetube-custom-caption-overlay .freetube-custom-caption-text {
+  display: inline-block;
+  max-width: 100%;
+  font-size: min(var(--ft-caption-size), 12cqw) !important;
+}
+.shaka-video-container {
+  container-type: inline-size;
+}
+@media (max-width: 700px) {
+  #ft-apple-settings {
+    padding: 20px;
+  }
+  #ft-apple-settings .ft-grid {
+    grid-template-columns: 1fr;
+  }
+  .topNav .logo {
+    display: none !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  #ft-titlebar,
+  .topNav {
+    backdrop-filter: none !important;
+    background: var(--bg-tertiary) !important;
+  }
+}
+@media (prefers-contrast: more) {
+  #ft-apple-settings,
+  .ft-card {
+    border-color: var(--label);
+  }
+  #ft-apple-settings .ft-note,
+  #ft-apple-settings .ft-subtitle {
+    color: var(--label);
+  }
+}
+
+/* Shared component finishes. Keep Vue's layout, events and transitions intact. */
+:root,
+:root[data-theme='light'] {
+  --accent: #e8b4c8;
+  --ft-accent-ink: #8d3c60;
+  --ft-on-accent: #3a202d;
+  --label-secondary: #595963;
+  --ft-rim: rgb(255 255 255 / 0.65);
+}
+:root[data-theme='dark'] {
+  --accent: #e8b4c8;
+  --ft-accent-ink: #efc3d4;
+  --ft-on-accent: #3a202d;
+  --label-secondary: #b6b6c0;
+  --ft-rim: rgb(255 255 255 / 0.1);
+}
+body {
+  --tertiary-text-color: var(--label-secondary) !important;
+  --text-with-accent-color: var(--ft-on-accent) !important;
+  --text-with-main-color: var(--ft-on-accent) !important;
+  --accent-color-hover: #f0c7d7 !important;
+  --accent-color-active: #d79eb5 !important;
+  --accent-color-visited: var(--ft-accent-ink) !important;
+  --link-visited-color: var(--ft-accent-ink) !important;
+  --primary-color-hover: #f0c7d7 !important;
+  --primary-color-active: #d79eb5 !important;
+  --accent-color-light: color-mix(in srgb, var(--accent) 24%, var(--bg-tertiary)) !important;
+  --primary-shadow-color: var(--fill-2) !important;
+  --side-nav-hover-text-color: var(--label) !important;
+  --side-nav-active-text-color: var(--ft-accent-ink) !important;
+}
+.app,
+.description,
+.shaka-video-container {
+  font-family: var(--font-sans) !important;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+.topNav {
+  background: var(--material-thick-tint) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow:
+    inset 0 1px var(--ft-rim),
+    0 1px 0 var(--fill-3) !important;
+}
+.topNav .logo {
+  text-decoration: none;
+}
+.sideNav .navLabel {
+  font-size: 11px;
+  overflow-wrap: normal !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sideNav.opened .navLabel {
+  font-size: 14px;
+  margin-block: 10px !important;
+}
+.sideNav:not(.opened) .navOption {
+  margin-inline: 3px;
+}
+.sideNav .navOption {
+  transition: background-color 140ms var(--ease-out) !important;
+}
+.btn {
+  border-radius: var(--radius-sm) !important;
+  border-width: 1px !important;
+  box-shadow: var(--shadow-1) !important;
+  font-weight: 600 !important;
+  min-height: 40px;
+}
+.iconButton,
+.navButton {
+  border-radius: var(--radius-sm) !important;
+}
+.iconButton:hover,
+.navButton:hover {
+  background: var(--fill-3) !important;
+}
+.ft-input,
+.select-text,
+textarea {
+  border: 1px solid var(--fill-2) !important;
+  border-radius: var(--radius-sm) !important;
+  background: var(--bg-tertiary) !important;
+  color: var(--label) !important;
+  box-shadow: var(--shadow-1);
+}
+.select-bar::before,
+.select-bar::after {
+  background: var(--accent) !important;
+}
+.select-label {
+  color: var(--label-secondary) !important;
+}
+.switch-label::before {
+  block-size: 22px !important;
+  inline-size: 38px !important;
+  border-radius: 20px !important;
+  background: var(--fill-1) !important;
+}
+.switch-label::after {
+  block-size: 18px !important;
+  inline-size: 18px !important;
+  inset-inline-start: 3px !important;
+  background: #fff !important;
+  box-shadow: 0 1px 3px #0003 !important;
+}
+.switch-input:checked + .switch-label::before {
+  background: var(--accent) !important;
+}
+.switch-input:checked + .switch-label::after {
+  transform: translate(calc(16px * var(--horizontal-directionality-coefficient)), -50%) !important;
+}
+.switch-input:focus-visible + .switch-label::before {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.switch-input:disabled + .switch-label {
+  opacity: 0.5;
+}
+.tabs {
+  gap: 4px;
+}
+.tabs .tab {
+  border: 0 !important;
+  border-radius: var(--radius-sm);
+  font-size: 14px !important;
+}
+.tabs .selectedTab {
+  background: var(--fill-3);
+  color: var(--label) !important;
+  margin-block-end: 0 !important;
+}
+.settingsMenu .title {
+  border-radius: var(--radius-sm);
+}
+.settingsMenu .title.active {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: var(--ft-accent-ink) !important;
+}
+.settingsMenu .titleUnderline {
+  border: 0 !important;
+}
+.sectionBody {
+  padding: 24px !important;
+}
+.sectionTitle {
+  font-size: 22px !important;
+  font-weight: 650;
+}
+.ftNotificationBanner {
+  border: 1px solid var(--fill-3);
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary) !important;
+}
+.ft-list-item .thumbnail,
+.ft-list-item img.videoThumbnail {
+  border-radius: var(--radius-md);
+}
+.iconDropdown,
+.promptCard,
+.searchSuggestions,
+.profileList,
+.ft-prompt,
+.ft-modal,
+dialog,
+[role='dialog'] {
+  border-radius: var(--radius-lg) !important;
+  background: var(--bg-tertiary) !important;
+  color: var(--label) !important;
+  box-shadow:
+    inset 0 1px var(--ft-rim),
+    var(--shadow-3) !important;
+  border: 1px solid var(--fill-2);
+}
+.iconDropdown {
+  padding: 4px;
+}
+.iconDropdown .listItem {
+  border-radius: var(--radius-xs);
+}
+.prompt {
+  background: rgb(0 0 0 / 0.38) !important;
+}
+.headingIcon {
+  color: var(--ft-accent-ink) !important;
+}
+.subscriptionIcon {
+  color: var(--ft-accent-ink) !important;
+}
+.topNavBarColor .navButton,
+.topNavBarColor .iconButton {
+  color: var(--label) !important;
+}
+.ftNotificationBanner {
+  color: var(--label) !important;
+}
+.shaka-range-container {
+  --primary-color: var(--accent);
+}
+.shaka-bottom-controls {
+  border-radius: var(--radius-md);
+}
+.shaka-controls-button-panel {
+  font-family: var(--font-sans);
+}
+.shaka-overflow-menu,
+.shaka-settings-menu {
+  background: rgb(30 30 34 / 0.96) !important;
+  color: #fff !important;
+  border: 1px solid #ffffff24;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-3);
+  padding: 6px !important;
+}
+.shaka-overflow-menu button,
+.shaka-settings-menu button {
+  border-radius: var(--radius-sm);
+  color: #fff !important;
+}
+.shaka-overflow-menu button:hover,
+.shaka-settings-menu button:hover {
+  background: #ffffff20 !important;
+}
+.shaka-settings-menu .shaka-chosen-item {
+  color: var(--accent) !important;
+}
+.ft-input-component a,
+.select-text:focus ~ .select-label {
+  color: var(--ft-accent-ink) !important;
+}
+input[type='range'],
+input[type='checkbox'] {
+  accent-color: var(--accent);
+}
+::selection {
+  background: var(--accent);
+  color: var(--ft-on-accent);
+}
+#ft-titlebar button:focus-visible {
+  outline-offset: -4px;
+}
+@media (min-width: 1016px) {
+  .settingsMenu {
+    top: 120px !important;
+  }
+}
+@media (max-width: 680px) {
+  html:not(.ft-fullscreen) .sideNav {
+    top: auto !important;
+    max-height: 64px;
+  }
+  .sideNav .navOption {
+    margin: 0 2px;
+    min-height: 40px;
+  }
+  .sideNav .navLabel {
+    font-size: 10px;
+  }
+  .sideNav .navOption {
+    inline-size: 86px;
+  }
+  .topNav .side {
+    min-width: 0;
+  }
+  .sectionBody {
+    padding: 16px !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .topNav {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: var(--bg-tertiary) !important;
+  }
+}
+@media (prefers-contrast: more) {
+  :root {
+    --label-secondary: var(--label);
+  }
+  .btn,
+  .ft-input,
+  .select-text,
+  .sectionBody,
+  .sideNav {
+    border: 1px solid var(--label) !important;
+  }
+}

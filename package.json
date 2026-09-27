@@ -1,0 +1,21 @@
+{
+  "name": "freetube-apple-captions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Word-timed captions and an Apple-inspired interface for FreeTube.",
+  "license": "AGPL-3.0-or-later",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "build": "node build.cjs",
+    "start": "./run.sh",
+    "test": "node --test tests/*.cjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "install:desktop": "node scripts/install-desktop.cjs"
+  },
+  "devDependencies": {
+    "prettier": "3.9.9"
+  }
+}
