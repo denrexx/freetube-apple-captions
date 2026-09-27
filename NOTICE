@@ -1,17 +1,9 @@
 FreeTube Apple Captions
 
-Customizations for FreeTube 0.25.3 Beta.
+Based on FreeTube 0.25.3 Beta, developed by the FreeTube contributors.
 Upstream source: https://github.com/FreeTubeApp/FreeTube/tree/v0.25.3-beta
-Upstream license: GNU Affero General Public License, version 3 or later.
+License: GNU Affero General Public License, version 3 or later.
 
-FreeTube and its original code are the work of the FreeTube contributors.
-These customizations modify window appearance, caption presentation, settings,
-and playback recovery. No upstream contributor is claimed as an author of
-these modifications.
-
-Application binaries, personal profiles, and proprietary fonts are not
-distributed in this repository. Third-party components in an installed
-FreeTube deployment retain their respective licenses and notices.
-
-Apple names identify the design inspiration and optional user-installed fonts.
-This project has no affiliation with Apple or the FreeTube project.
+Customizations cover window appearance, captions, settings, and playback recovery.
+Third-party components in FreeTube retain their respective licenses and notices.
+Apple fonts are not bundled. This project is independent of FreeTube and Apple.
